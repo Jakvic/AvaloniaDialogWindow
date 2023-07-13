@@ -1,12 +1,14 @@
 ﻿using System.Diagnostics;
 using System.Net.Http;
 using System.Reactive;
+using System.Reactive.Linq;
 using Avalonia;
-using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
+using Avalonia.Data;
 using Avalonia.Threading;
 using AvaloniaApplication1.Views;
 using ReactiveUI;
+using ReactiveUI.Fody.Helpers;
 
 namespace AvaloniaApplication1.ViewModels;
 
@@ -17,12 +19,14 @@ public class MainWindowViewModel : ViewModelBase
         ShowDialogCommand = ReactiveCommand.Create(ShowDialog);
     }
 
-    public string Greeting => "Welcome to Avalonia!";
+    [Reactive]
+    public string Greeting { get; set; } = "Welcome to Avalonia!";
 
     public ReactiveCommand<Unit, Unit> ShowDialogCommand { get; }
 
     private void ShowDialog()
     {
+        Greeting = "Fuck Avalonia";
         Debug.WriteLine("Binding Ok!");
         if (Application.Current?.ApplicationLifetime is not IClassicDesktopStyleApplicationLifetime desktop)
         {
@@ -48,7 +52,7 @@ public class MainWindowViewModel : ViewModelBase
             dialogViewModel.Content = data;
             var a = dialogViewModel.Title;
             dialogViewModel.Title = "Fuck Avalonia";
-            dialogViewModel.Content = "asoifdjhasl;fhjlkdsahfl;kjsdahflkjsdahf\nbasfadfad";
+            dialogViewModel.Content = data;
         }
     }
 }

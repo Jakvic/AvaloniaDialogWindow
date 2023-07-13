@@ -1,12 +1,12 @@
-﻿using PropertyChanging;
-using ReactiveUI;
+﻿using ReactiveUI.Fody.Helpers;
 
 namespace AvaloniaApplication1.ViewModels;
 
-[ImplementPropertyChanging]
-public class DialogViewModel
+public class DialogViewModel : ViewModelBase
 {
+    [Reactive]
     public string Title { get; set; } = "DialogView Title";
 
+    [Reactive]
     public string Content { get; set; } = string.Empty;
 }

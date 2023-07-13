@@ -27,7 +27,7 @@
                 <TextBox Text="{Binding Content}"
                          FontSize="13" Foreground="White"
                          TextWrapping="WrapWithOverflow"
-                         AcceptsReturn="True"
+                         AcceptsReturn="True" IsReadOnly="True"
                          BorderThickness="0">
                 </TextBox>
             </Grid>
