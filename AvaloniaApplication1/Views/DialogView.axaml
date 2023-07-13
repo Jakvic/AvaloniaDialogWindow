@@ -1,0 +1,41 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModels="clr-namespace:AvaloniaApplication1.ViewModels"
+        mc:Ignorable="d" x:DataType="viewModels:DialogViewModel"
+        x:Class="AvaloniaApplication1.Views.DialogView"
+        WindowStartupLocation="CenterOwner"
+        Height="600" Width="450"
+        SystemDecorations="BorderOnly">
+    <Design.DataContext>
+        <viewModels:DialogViewModel />
+    </Design.DataContext>
+    <Window.DataContext>
+        <viewModels:DialogViewModel />
+    </Window.DataContext>
+
+    <Border CornerRadius="8">
+        <Grid RowDefinitions="Auto * Auto">
+            <Border Grid.Row="0" BorderThickness="0 0 0 1">
+
+                <TextBlock Margin="5 5 0 0"
+                           Text="{Binding Title}" FontWeight="Bold" FontSize="14" />
+            </Border>
+
+            <Grid Grid.Row="1" Margin="5 0">
+                <TextBox Text="{Binding Content}"
+                         FontSize="13" Foreground="White"
+                         TextWrapping="WrapWithOverflow"
+                         AcceptsReturn="True"
+                         BorderThickness="0">
+                </TextBox>
+            </Grid>
+            <Border Grid.Row="2" BorderThickness="0 1 0 0">
+                <Button Content="Close" Click="OnClick" Padding="10 4"
+                        Background="PaleVioletRed" HorizontalAlignment="Center"
+                        Margin="0 5" />
+            </Border>
+        </Grid>
+    </Border>
+</Window>
